@@ -7,7 +7,7 @@ import st_plots
 
 from numerize.numerize import numerize
 
-pedido = Pedido('data\PLANILHA DE PEDIDO DISMEPI_st.xlsx')
+pedido = Pedido('.\data\PLANILHA DE PEDIDO DISMEPI_st.xlsx')
 
 
 st.set_page_config(layout="wide")

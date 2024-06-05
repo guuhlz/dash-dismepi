@@ -8,8 +8,8 @@ import st_plots
 from numerize.numerize import numerize
 
 
-
-#st.page_link("pages/Dashboard.py")
+st.header("Data App Dismepi")
+st.page_link("pages/Dashboard.py")
 st.page_link("pages/estoque.py")
 
 #st.sidebar.write("teste")
