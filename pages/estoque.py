@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(layout="wide")
 
 st.title("Estoque")
-estoque = pd.read_excel('./PLANILHA DE PEDIDO DISMEPI_st.xlsx',sheet_name='PEDIDO')
+estoque = pd.read_excel('data\PLANILHA DE PEDIDO DISMEPI_st.xlsx',sheet_name='PEDIDO')
 estoque['Código Promax'].astype('str')
 estoque['PERCENTUAL OVER/DOWN'] = estoque['PERCENTUAL OVER/DOWN'] * 100
 
