@@ -4,7 +4,7 @@ import pandas as pd
 
 def fig_top10_impacto_over(pedido):
     df = pd.melt(pedido.estoque_top10_impacto_over(), 
-                 id_vars="Desc. Prod.",
+                 id_vars="Prod_resume",
                  value_vars=["IMPACTO","OVER/DOWN"], 
                  var_name="Measurement", 
                  value_name="Value"
@@ -12,7 +12,7 @@ def fig_top10_impacto_over(pedido):
 
     # Plot
     fig = px.bar(df,
-                y="Desc. Prod.",
+                y="Prod_resume",
                 x="Value",
                 text="Value",
                 barmode='group',
@@ -30,14 +30,24 @@ def fig_top10_impacto_over(pedido):
                         xaxis_visible=False,
                         plot_bgcolor='rgb(6,31,61)',
                         paper_bgcolor='rgb(6,31,61)',
-                        yaxis=dict(position=0)
+                        yaxis=dict(position=0),
+                        legend=dict(
+                            x=0.7,  # Adjust x position (0 to 1)
+                            y=0.2,  # Adjust y position (0 to 1)
+                            xanchor='left',  # Positioning anchor for x
+                            yanchor='top',  # Positioning anchor for y
+                            title_text='',  # Remove legend title
+                            font=dict(color='white')  # Color of the legend text
+                        ),
+                        margin=dict(l=0, r=0, t=20, b=50),  # Adjust margins
+                        #height=800
                         )
 
     fig.update_traces(texttemplate="R$ %{text:,.2f}", 
                         textposition="outside",
                         textfont_size=12,
                         textfont_color='white',
-                        marker_line_color='black'
+                        marker_line_color='black',
                     )
     
     fig.update_yaxes(autorange="reversed",
@@ -48,7 +58,7 @@ def fig_top10_impacto_over(pedido):
 
 def fig_top10_impacto_down(pedido):
     df = pd.melt(pedido.estoque_top10_impacto_down(), 
-                    id_vars="Desc. Prod.",
+                    id_vars="Prod_resume",
                     value_vars=["IMPACTO","OVER/DOWN"],
                     var_name="Measurement",
                     value_name="Value"
@@ -58,7 +68,7 @@ def fig_top10_impacto_down(pedido):
 
     # Plot
     fig = px.bar(df,
-                y="Desc. Prod.",
+                y="Prod_resume",
                 x="Value",
                 text="Value",
                 barmode='group',
@@ -77,16 +87,23 @@ def fig_top10_impacto_down(pedido):
         xaxis_visible=False,
         plot_bgcolor='rgb(6,31,61)',
         paper_bgcolor='rgb(6,31,61)',
-        yaxis=dict(position=0)
-
-    
+        yaxis=dict(position=0),
+        legend=dict(
+                            x=0.7,  # Adjust x position (0 to 1)
+                            y=0.2,  # Adjust y position (0 to 1)
+                            xanchor='left',  # Positioning anchor for x
+                            yanchor='top',  # Positioning anchor for y
+                            title_text='',  # Remove legend title
+                            font=dict(color='white')  # Color of the legend text
+                        ),
+        margin=dict(l=0, r=0, t=20, b=50),  # Adjust margins
     )
 
     fig.update_traces(texttemplate="-R$ %{text:,.2f}", 
                     textposition="outside",
                     textfont_size=12,
                     textfont_color='white',
-                    marker_line_color='black'
+                    marker_line_color='black',
                     )
 
     fig.update_yaxes(autorange="reversed",
@@ -101,7 +118,7 @@ def fig_percentual_over_10(pedido):
     df=pedido.estoque_top10_percentual_over()
 
     fig = px.bar(df,
-                y="Desc. Prod.",
+                y="Prod_resume",
                 x="PERCENTUAL OVER/DOWN",
                 text="PERCENTUAL OVER/DOWN",
                 
@@ -122,6 +139,8 @@ def fig_percentual_over_10(pedido):
         xaxis_visible=False,
         plot_bgcolor='rgb(6,31,61)',
         paper_bgcolor='rgb(6,31,61)',
+        margin=dict(l=0, r=0, t=20, b=150),  # Adjust margins
+        
 
     
     )
@@ -148,7 +167,7 @@ def fig_percentual_down_10(pedido):
     df['PERCENTUAL OVER/DOWN'] = df['PERCENTUAL OVER/DOWN'].apply(lambda x: abs(x))
 
     fig = px.bar(df,
-                y="Desc. Prod.",
+                y="Prod_resume",
                 x="PERCENTUAL OVER/DOWN",
                 text="PERCENTUAL OVER/DOWN",
                 
@@ -163,15 +182,16 @@ def fig_percentual_down_10(pedido):
         xaxis_visible=False,
         plot_bgcolor='rgb(6,31,61)',
         paper_bgcolor='rgb(6,31,61)',
+        margin=dict(l=0, r=0, t=20, b=150),  # Adjust margins
 
     
     )
 
     fig.update_traces(texttemplate="-%{text:,.2f}%",
-                    textposition="outside",
+                    textposition="inside",
                     textfont_size=12,
                     textfont_color='white',
-                    marker_color='yellow',
+                    marker_color='green',
                     marker_line_color='black')  
 
     fig.update_yaxes(autorange="reversed",
