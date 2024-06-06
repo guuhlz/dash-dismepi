@@ -4,7 +4,6 @@ import numerize
 
 st.set_page_config(layout="wide")
 
-st.title("Estoque")
 
 #st.header("Estoque")
 estoque = pd.read_excel('.\data\PLANILHA DE PEDIDO DISMEPI_st.xlsx',sheet_name='PEDIDO')
