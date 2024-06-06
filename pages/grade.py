@@ -12,4 +12,5 @@ st.dataframe(grade[['Cod',
                     'Descricao',
                     'UN',
                     'Inicial',
+                    'Saidas',
                     'Disp.']],hide_index=True,use_container_width=True)

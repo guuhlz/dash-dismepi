@@ -13,7 +13,7 @@ estoque['ESTOQUE'] = estoque['ESTOQUE'].apply(lambda x: '{:.0f}'.format(x))
 #estoque['ESTOQUE MÁXIMO'] = estoque['ESTOQUE MÁXIMO'].apply(lambda x: '{:.2f}'.format(x))
 
 estoque['PERCENTUAL OVER/DOWN'] = estoque['PERCENTUAL OVER/DOWN'] * 100
-estoque['PERCENTUAL OVER/DOWN'] = estoque['PERCENTUAL OVER/DOWN'].apply(lambda x: '{:.2f}'.format(x))
+#estoque['PERCENTUAL OVER/DOWN'] = estoque['PERCENTUAL OVER/DOWN'].apply(lambda x: '{:.2f}'.format(x))
 
 
 estoque = estoque.rename(
