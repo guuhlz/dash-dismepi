@@ -23,7 +23,7 @@ estoque = estoque.rename(
              'Código Promax': 'Código',
              'Prod. Completo': 'Produto',
              'ESTOQUE REAL': 'Estoque Real (R$)',
-             'PERCENTUAL OVER/DOWN': 'Percentual Over/Down (%)',
+             #'PERCENTUAL OVER/DOWN': 'Percentual Over/Down (%)',
              'OVER/DOWN': 'Over/Down (R$)',
              'PALETIZAÇÃO': 'Paletização' }
 )
