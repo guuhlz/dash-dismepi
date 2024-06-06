@@ -37,6 +37,6 @@ st.dataframe(estoque[['Código',
                       'Estoque mínimo (R$)',
                       'Estoque máximo (R$)',
                       'Estoque Real (R$)',
-                      'Percentual Over/Down (%)',
+                      #'Percentual Over/Down (%)',
                       'Over/Down (R$)']]
                       ,hide_index=True,use_container_width=True)
