@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 
 
 #st.header("Estoque")
-estoque = pd.read_excel('.\data\PLANILHA DE PEDIDO DISMEPI_st.xlsx',sheet_name='PEDIDO')
+estoque = pd.read_excel('./data/PLANILHA DE PEDIDO DISMEPI_st.xlsx',sheet_name='PEDIDO')
 estoque['Código Promax'] = estoque['Código Promax'].apply(lambda x: '{:.0f}'.format(x))
 estoque['ESTOQUE'] = estoque['ESTOQUE'].apply(lambda x: '{:.0f}'.format(x))
 
