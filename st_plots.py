@@ -53,6 +53,7 @@ def fig_top10_impacto_over(pedido):
     fig.update_yaxes(autorange="reversed",
                         tickfont=dict(color='white'), 
                     )
+    fig.update_xaxes(rangeslider_visible=False)
 
     return fig
 
@@ -110,8 +111,7 @@ def fig_top10_impacto_down(pedido):
                     tickfont=dict(color='white'), 
                     )
 
-
-
+  
     return fig
 
 def fig_percentual_over_10(pedido):
