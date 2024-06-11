@@ -6,7 +6,8 @@ st.set_page_config(layout="wide")
 
 grade = pd.read_csv('./data/grade.csv',sep=';')
 
-grade['Cod'] = grade['Cod'].apply(lambda x: '{:.0f}'.format(x))
+#grade['Cod'] = (grade['Cod'].apply(lambda x: '{:.0f}'.format(x)))
+grade['Cod'].replace(",","")
 
 st.dataframe(grade[['Cod',
                     'Descricao',
