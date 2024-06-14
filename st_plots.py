@@ -3,10 +3,10 @@ import plotly.express as px
 import pandas as pd
 
 def fig_top10_impacto_over(pedido):
-    df = pd.melt(pedido.estoque_top10_impacto_over(), 
-                 id_vars="Prod_resume",
-                 value_vars=["IMPACTO","OVER/DOWN"], 
-                 var_name="Measurement", 
+    df = pd.melt(pedido.estoque_top10_impacto_over(),
+                 id_vars=["Prod_resume","Prod. Completo"],
+                 value_vars=["IMPACTO","OVER/DOWN"],
+                 var_name="Dados",
                  value_name="Value"
                 )
 
@@ -16,10 +16,17 @@ def fig_top10_impacto_over(pedido):
                 x="Value",
                 text="Value",
                 barmode='group',
-                color='Measurement',  # Color by type of measurement
-                labels={"Value": "Value (R$)"},  # Label for y-axis
-                category_orders={"Measurement": ["IMPACTO", "OVER/DOWN"]},
-                color_discrete_map={'IMPACTO': 'red', 'OVER/DOWN': 'yellow'}
+                color='Dados',  # Color by type of measurement
+                #labels={"Value": "Value (R$)"},  # Label for y-axis
+                category_orders={"Dados": ["IMPACTO", "OVER/DOWN"]},
+                color_discrete_map={'IMPACTO': 'red', 'OVER/DOWN': 'yellow'},
+                hover_name='Dados',
+                hover_data={'Prod. Completo': True,
+                            'Prod_resume': False,
+                            'Value':':2.f',
+                            'Dados': False,
+
+                }
                 )
 
     fig.update_layout(title="Top 10 Impacto e Over",

@@ -8,10 +8,17 @@ class Pedido:
         self.df = pd.read_excel(self.arquivo_caminho, sheet_name='PEDIDO')
 
         desc_produtos = pd.read_excel('./data/desc_produtos.xlsx',sheet_name='Prod')
-        self.df = self.df.merge(desc_produtos,on='Código Promax',how='left')
+        self.df = self.df.merge(desc_produtos,on='Código Promax',how='outer')
 
     def __estoque_no_mktp(self):
-        return self.df[self.df['Categorização'] != '003 - MKTP'][['Prod_resume', 'IMPACTO', 'OVER/DOWN','PERCENTUAL OVER/DOWN','Estoque HL']]
+        return self.df[self.df['Categorização'] != '003 - MKTP'][['Prod_resume', 
+                                                                  'IMPACTO', 
+                                                                  'OVER/DOWN',
+                                                                  'PERCENTUAL OVER/DOWN',
+                                                                  'Estoque HL',
+                                                                  'Prod. Completo',
+                                                                  'FEFO/ESTOQUE',
+                                                                  'FEFO/PICKING']]
 
     def estoque_over(self):
         estoque_over = self.df[self.df['OVER/DOWN'] > 0]['OVER/DOWN'].sum() 
