@@ -4,7 +4,7 @@ import pandas as pd
 
 def fig_top10_impacto_over(pedido):
     df = pd.melt(pedido.estoque_top10_impacto_over(),
-                 id_vars=["Prod_resume","Prod. Completo"],
+                 id_vars=['Prod_resume','Prod. Completo','FEFO/ESTOQUE','FEFO/PICKING'],
                  value_vars=["IMPACTO","OVER/DOWN"],
                  var_name="Dados",
                  value_name="Value"
@@ -25,6 +25,8 @@ def fig_top10_impacto_over(pedido):
                             'Prod_resume': False,
                             'Value':':2.f',
                             'Dados': False,
+                            'FEFO/ESTOQUE': True,
+                            'FEFO/PICKING': True
 
                 }
                 )
@@ -46,11 +48,12 @@ def fig_top10_impacto_over(pedido):
                             title_text='',  # Remove legend title
                             font=dict(color='white')  # Color of the legend text
                         ),
-                        margin=dict(l=0, r=0, t=20, b=50),  # Adjust margins
+                        margin=dict(l=0, r=0, t=20, b=50),  # Adjust margins,
+                        hoverlabel=dict(align="left"),
                         #height=800
                         )
 
-    fig.update_traces(texttemplate="R$ %{text:,.2f}", 
+    fig.update_traces(texttemplate="R$ %{text:,.2f}",
                         textposition="outside",
                         textfont_size=12,
                         textfont_color='white',
@@ -58,7 +61,7 @@ def fig_top10_impacto_over(pedido):
                     )
     
     fig.update_yaxes(autorange="reversed",
-                        tickfont=dict(color='white'), 
+                        tickfont=dict(color='white'),
                     )
     fig.update_xaxes(rangeslider_visible=False)
 
@@ -66,10 +69,10 @@ def fig_top10_impacto_over(pedido):
 
 def fig_top10_impacto_down(pedido):
     df = pd.melt(pedido.estoque_top10_impacto_down(), 
-                    id_vars="Prod_resume",
+                    id_vars=['Prod_resume','Prod. Completo','FEFO/ESTOQUE','FEFO/PICKING'],
                     value_vars=["IMPACTO","OVER/DOWN"],
-                    var_name="Measurement",
-                    value_name="Value"
+                    var_name="Dados",
+                    value_name="Value",
                 )
 
     df['Value'] = df['Value'].apply(lambda x: abs(x))
@@ -80,10 +83,19 @@ def fig_top10_impacto_down(pedido):
                 x="Value",
                 text="Value",
                 barmode='group',
-                color='Measurement',  # Color by type of measurement
+                color='Dados',  # Color by type of measurement
                 labels={"Value": "Value (R$)"},  # Label for y-axis
-                category_orders={"Measurement": ["IMPACTO", "OVER/DOWN"]},
-                color_discrete_map={'IMPACTO': 'red', 'OVER/DOWN': 'green'}
+                category_orders={"Dados": ["IMPACTO", "OVER/DOWN"]},
+                color_discrete_map={'IMPACTO': 'red', 'OVER/DOWN': 'green'},
+                hover_name='Dados',
+                hover_data={'Prod. Completo': True,
+                            'Prod_resume': False,
+                            'Value':':2.f',
+                            'Dados': False,
+                            'FEFO/ESTOQUE': False,
+                            'FEFO/PICKING': False
+
+                }
                 )
 
     fig.update_layout(
@@ -105,9 +117,10 @@ def fig_top10_impacto_down(pedido):
                             font=dict(color='white')  # Color of the legend text
                         ),
         margin=dict(l=0, r=0, t=20, b=50),  # Adjust margins
+        hoverlabel=dict(align="left"),
     )
 
-    fig.update_traces(texttemplate="-R$ %{text:,.2f}", 
+    fig.update_traces(texttemplate="-R$ %{text:,.2f}",
                     textposition="outside",
                     textfont_size=12,
                     textfont_color='white',
@@ -115,7 +128,7 @@ def fig_top10_impacto_down(pedido):
                     )
 
     fig.update_yaxes(autorange="reversed",
-                    tickfont=dict(color='white'), 
+                    tickfont=dict(color='white'),
                     )
 
   
@@ -128,6 +141,11 @@ def fig_percentual_over_10(pedido):
                 y="Prod_resume",
                 x="PERCENTUAL OVER/DOWN",
                 text="PERCENTUAL OVER/DOWN",
+                 hover_data={'Prod. Completo': True,
+                            'Prod_resume': False,
+                            'FEFO/ESTOQUE': True,
+                            'FEFO/PICKING': True
+                 }
                 
     )
 
@@ -146,7 +164,8 @@ def fig_percentual_over_10(pedido):
         xaxis_visible=False,
         plot_bgcolor='rgb(6,31,61)',
         paper_bgcolor='rgb(6,31,61)',
-        margin=dict(l=0, r=0, t=20, b=150),  # Adjust margins
+        margin=dict(l=0, r=0, t=20, b=150),  # Adjust margins,
+       
         
 
     
@@ -172,6 +191,7 @@ def fig_percentual_down_10(pedido):
     df=pedido.estoque_top10_percentual_down()
 
     df['PERCENTUAL OVER/DOWN'] = df['PERCENTUAL OVER/DOWN'].apply(lambda x: abs(x))
+
 
     fig = px.bar(df,
                 y="Prod_resume",
@@ -199,10 +219,10 @@ def fig_percentual_down_10(pedido):
                     textfont_size=12,
                     textfont_color='white',
                     marker_color='green',
-                    marker_line_color='black')  
+                    marker_line_color='black')
 
     fig.update_yaxes(autorange="reversed",
-                    tickfont=dict(color='white'), 
+                    tickfont=dict(color='white'),
                     )
 
 

@@ -10,6 +10,11 @@ class Pedido:
         desc_produtos = pd.read_excel('./data/desc_produtos.xlsx',sheet_name='Prod')
         self.df = self.df.merge(desc_produtos,on='Código Promax',how='outer')
 
+        self.df['FEFO/ESTOQUE'] = pd.to_datetime(self.df['FEFO/ESTOQUE'], errors='coerce')
+        self.df['FEFO/ESTOQUE'] = self.df['FEFO/ESTOQUE'].apply(lambda x: x.strftime('%d/%m/%Y') if pd.notnull(x) else 'xx/xx/xxxx')
+
+        self.df['FEFO/PICKING'] = pd.to_datetime(self.df['FEFO/PICKING'], errors='coerce')
+        self.df['FEFO/PICKING'] = self.df['FEFO/PICKING'].apply(lambda x: x.strftime('%d/%m/%Y') if pd.notnull(x) else 'xx/xx/xxxx')
     def __estoque_no_mktp(self):
         return self.df[self.df['Categorização'] != '003 - MKTP'][['Prod_resume', 
                                                                   'IMPACTO', 
