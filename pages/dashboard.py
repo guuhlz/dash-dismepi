@@ -12,6 +12,17 @@ pedido = Pedido('./data/PLANILHA DE PEDIDO DISMEPI_st.xlsx')
 
 st.set_page_config(layout="wide")
 
+hide_css = """
+<style>
+.st-emotion-cache-15ecox0, .ezrtsby0 {
+    display: none;
+}
+</style>
+"""
+
+# Injetar o CSS no Streamlit
+st.markdown(hide_css, unsafe_allow_html=True)
+
 with open("style.css") as f:
     st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html=True)
 
