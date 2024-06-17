@@ -13,7 +13,7 @@ hide_css = """
 """
 
 # Injetar o CSS no Streamlit
-st.markdown(hide_css, unsafe_allow_html=True
+st.markdown(hide_css, unsafe_allow_html=True)
 
 st.header("Data App Dismepi")
 data = datetime.now((pytz.timezone('America/Sao_Paulo')))
