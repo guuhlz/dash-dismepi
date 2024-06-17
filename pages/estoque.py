@@ -4,6 +4,19 @@ import numerize
 
 st.set_page_config(layout="wide")
 
+st.set_page_config(layout="wide")
+
+hide_css = """
+<style>
+.st-emotion-cache-15ecox0, .ezrtsby0 {
+    display: none;
+}
+</style>
+"""
+
+# Injetar o CSS no Streamlit
+st.markdown(hide_css, unsafe_allow_html=True)
+
 op = st.radio ("Categorias",['Todos','Cerveja','Nab','Match','Mktp'],horizontal=True)
 
 

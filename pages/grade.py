@@ -4,6 +4,19 @@ import numerize
 
 st.set_page_config(layout="wide")
 
+st.set_page_config(layout="wide")
+
+hide_css = """
+<style>
+.st-emotion-cache-15ecox0, .ezrtsby0 {
+    display: none;
+}
+</style>
+"""
+
+# Injetar o CSS no Streamlit
+st.markdown(hide_css, unsafe_allow_html=True)
+
 grade = pd.read_csv('./data/grade.csv',sep=';')
 
 #grade['Cod'] = (grade['Cod'].apply(lambda x: '{:.0f}'.format(x)))
