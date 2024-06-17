@@ -4,7 +4,6 @@ import numerize
 
 st.set_page_config(layout="wide")
 
-st.set_page_config(layout="wide")
 
 hide_css = """
 <style>
