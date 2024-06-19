@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 import numerize
+import pages.upload_dados as upload_dados
+#import upload_dados
 
 st.set_page_config(layout="wide")
 
@@ -16,6 +18,7 @@ hide_css = """
 # Injetar o CSS no Streamlit
 st.markdown(hide_css, unsafe_allow_html=True)
 
+#grade = st.session_state['df_grade']
 grade = pd.read_csv('./data/grade.csv',sep=';')
 
 #grade['Cod'] = (grade['Cod'].apply(lambda x: '{:.0f}'.format(x)))
