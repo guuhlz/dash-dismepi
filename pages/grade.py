@@ -1,8 +1,6 @@
 import pandas as pd
 import streamlit as st
 import numerize
-import pages.upload_dados as upload_dados
-#import upload_dados
 
 st.set_page_config(layout="wide")
 
