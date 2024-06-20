@@ -201,7 +201,7 @@ def fig_percentual_down_10(pedido):
     )
 
     fig.update_layout(
-        title="Top 10 Percentual Over",
+        title="Top 10 Percentual Down",
         title_x=0.5,
         title_font=dict(color='white'),
         xaxis_title="",
