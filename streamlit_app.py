@@ -19,7 +19,7 @@ st.header("Data App Dismepi")
 data = datetime.now((pytz.timezone('America/Sao_Paulo')))
 
 #st.subheader("Atualização - " + str(data.day) +"/"+ str(data.month) +"/"+ str(data.year) +" - "+ str(data.hour) +":"+ str(data.minute) + ":" + str(data.second))
-st.subheader("Atualização - 03/07/2024 - 09:24:00")
+st.subheader("Atualização - 03/07/2024 - 15:38:00")
 #st.page_link("./app.py")
 #st.page_link("./pages/Dashboard.py")
 #st.page_link("./pages/Estoque.py")
